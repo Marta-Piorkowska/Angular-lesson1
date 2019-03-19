@@ -1,0 +1,51 @@
+<h2>Lista zadań</h2>
+
+<!--1. robimy [(ngModel)]="newTodoTitle", który odnosi się do tekstu wpisanego w imputa 
+    2. przymisujemy wartość do newTodoTitle w ts.
+    4. (keyup.enter)="addTodo()" oznacza, że za każdym razem gdy nacisne enter zostanie 
+      wywołana funkcja addTodo()
+-->
+
+<label >
+  nowe zadanie: <input type="text" [(ngModel)]="newTodoTitle" (keyup.enter)="addTodo()"/>
+</label>
+
+<!-- 17. Dodajemy dodatkowo przycisk do dodawania zadań
+      przycisk typu submit, na kliknięcie funkcja addTodo() -->
+<button type="submit" (click)='addTodo()'>Dodaj zadanie</button>
+
+
+<!-- 3. tworzymy ul i li oraz input z checknox, w którym będą się wyświetlać nasze zadania
+ -->
+<ul>
+  <!--8. w li dopisujemy dyrektywe *ngFor='let todo of todos todo=zadanie do zrobienia todos=lista zadań
+      czyli pobieram zadanie z listy zadań -->
+<!-- 15. *ngFor='xx; let ind=index' będziemy pobierax (ind) index mówiąc że jest on = indexowi elementu-->
+
+  <li *ngFor='let todo of todos; let ind=index'>
+
+<!-- 9. teraz musimy powiązać checkbox z elementem complite z listy zadań (ts. 6),
+    tłumacz - jeżeli zaznaczymy terz checkbox to boolen dostanie wartość true 
+    w tym momencie mamy tylko chcekbox, trzeba stworzyć span na tytuł
+    (jest to pętla mogąca wyciągać dyrektywy z drzewa DOM)-->
+
+    <input type="checkbox" [(ngModel)]='todo.complete'/>
+
+<!-- 10. tworzymy span by móc do noigo zapisać tytół <span>{{todo.title}}</span>
+      teraz wyświetla się checkbox i tytuł próbnych elementów listy ale dopisywanie jeszcze nie działa
+      przechodzimy do ts.-->
+<!-- 18. chcemy by tytuł był przekre slany w momencie zaznaczenia na wykonane
+  dodajemy atrybut ngClass, który będzie nadawał klasę checked tylko w tedy kiedy zadanie jest 
+  ukończone czyli todo.complete (true) (można zrobić false !todo.complete w twdy będą przekreślone zadania jeszcze nie zrobione)  -->
+
+    <span [ngClass]={checked:todo.complete}>{{todo.title}}</span>
+
+<!-- 14. tworzymy span do niego dodajemy zdarzenie na kliknięcie, które ma wywołać funkcje
+       delateTodo() do której musimy przekazać indeks, by to zrobić musimy najpierw pobrać indeks -->
+<!-- 16. przekazujemy index (click)='delateTodo(ind)'
+      dodajemy klasę która w stylach oscyluje nam myszkę na pointer -->
+    <span (click)='delateTodo(ind)' class="delate-icon">[X]</span>
+  </li>
+</ul>
+
+

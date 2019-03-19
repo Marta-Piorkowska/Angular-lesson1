@@ -1,0 +1,11 @@
+h2{
+    color:green;
+}
+
+.delate-icon{
+    cursor: pointer;
+}
+
+.checked{
+    text-decoration: line-through;
+}
