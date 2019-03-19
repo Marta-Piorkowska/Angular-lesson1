@@ -25,3 +25,37 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+///////////////////////////////////////////////////////////
+//instalacja 
+sudo npm install --unsafe-perm -g @angular/cli
+
+
+
+1 // otwieranie VS Code jako root (bez tego nie chce się zapisywać)
+sudo code --user-data-dir="~/.vscode-root"
+
+2 // tworzenie nowego projektu
+sudo ng new NowyProjekt
+
+3 // otwieranie serwera dla projektu
+ng serve --open
+
+4 //tworzenie nowego komponentu
+sudo ng g component nowykomponent
+
+
+/////////////////////////////////////
+
+1 // Przy urzyciu [(ngModel)]="xxx"
+należy do folderu app.modules.ts włożyć na górze 
+
+import { FormsModule } from '@angular/forms';
+
+oraz w 
+  imports: [
+    xxx,
+    xxx,
+    FormsModule 
+  ],
